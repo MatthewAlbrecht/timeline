@@ -8,6 +8,10 @@ export default {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      gridTemplateColumns: {
+        // Complex site-specific column configuration
+        timeline: "100px 5px 250px 250px 250px",
+      },
     },
   },
   plugins: [],
