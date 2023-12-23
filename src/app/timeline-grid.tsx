@@ -1,21 +1,25 @@
 import React from "react";
-import { EnrichedEvent, type TimelineDay } from "~/types";
+import { type EnrichedEvent, type TimelineDay } from "~/types";
 import { clsx } from "clsx";
+import { compareEventLength } from "./timeline.helpers";
 type Props = {
   days: TimelineDay[];
   zoomLevel: number;
 };
 
 export default function TimelinGrid({ days, zoomLevel }: Props) {
+  const totalColumnsNeeded = days.reduce(compareEventLength, 0);
   const rowHeightClass = getRowHeightClass(zoomLevel);
+  const gridColumnsClass = getGridColumnsClass(totalColumnsNeeded);
   return (
-    <div className="grid grid-cols-timeline gap-x-2">
+    <div className={`grid ${gridColumnsClass}`}>
       {days.map((day, idx) => (
         <TimelineGridRow
           day={day}
           key={day.date.valueOf()}
           idx={idx}
           rowHeightClass={rowHeightClass}
+          totalColumnsNeeded={totalColumnsNeeded}
         />
       ))}
     </div>
@@ -25,18 +29,13 @@ export default function TimelinGrid({ days, zoomLevel }: Props) {
 function TimelineGridRow({
   day: { date, events },
   rowHeightClass,
+  totalColumnsNeeded,
 }: {
   day: TimelineDay;
   idx: number;
   rowHeightClass: string;
+  totalColumnsNeeded: number;
 }) {
-  const [firstEvent, secondEvent, thirdEvent, fourthEvent] = events;
-  console.log(date.format("YYYY-MM-DD"), [
-    firstEvent,
-    secondEvent,
-    thirdEvent,
-    fourthEvent,
-  ]);
   return (
     <>
       <div
@@ -52,10 +51,9 @@ function TimelineGridRow({
       </div>
       <div></div>
 
-      <TimelineGridItem event={firstEvent} />
-      <TimelineGridItem event={secondEvent} />
-      <TimelineGridItem event={thirdEvent} />
-      <TimelineGridItem event={fourthEvent} />
+      {Array.from({ length: totalColumnsNeeded }, (_, index) => (
+        <TimelineGridItem key={index} event={events[index]} />
+      ))}
     </>
   );
 }
@@ -65,21 +63,44 @@ function TimelineGridItem({ event }: { event: EnrichedEvent | undefined }) {
     return Boolean(event.isStart) ? (
       <div
         className={clsx(
-          "w-full bg-gray-800 px-3 pb-1 pt-4",
+          "w-full px-3 pb-1 pt-4",
           rowSpanClasses[event.daySpan - 1],
         )}
       >
-        <div className="h-full w-full rounded bg-gray-100">
-          <span className="text-black">
-            {event.start} - {event.end}
-          </span>
+        <div className="h-full w-full rounded bg-gray-100 px-2 pt-4">
+          <h2 className="text-center font-semibold leading-none text-gray-900">
+            {event.name}
+          </h2>
         </div>
       </div>
     ) : (
       <></>
     );
   }
-  return <div className={`w-full bg-gray-800`} />;
+  return <div className={`w-full`} />;
+}
+
+function getGridColumnsClass(totalColumnsNeeded: number) {
+  switch (totalColumnsNeeded) {
+    case 3: {
+      return "grid-cols-timeline3";
+    }
+    case 4: {
+      return "grid-cols-timeline4";
+    }
+    case 5: {
+      return "grid-cols-timeline5";
+    }
+    case 6: {
+      return "grid-cols-timeline6";
+    }
+    case 7: {
+      return "grid-cols-timeline7";
+    }
+    default: {
+      return "grid-cols-timeline7";
+    }
+  }
 }
 
 function getRowHeightClass(zoomLevel: number) {
@@ -99,6 +120,8 @@ function getRowHeightClass(zoomLevel: number) {
   }
 }
 
+// this is a hack. Tailwind isn't a runtime solution, so all classes
+// that may exist need to be written as strings in the codebase. Not ideal.
 const rowSpanClasses = [
   "row-span-1",
   "row-span-2",

@@ -1,28 +1,21 @@
-# Create T3 App
+# Matthew Albrecht Assignment
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## How long did you spend on the assignment.
 
-## What's next? How do I make an app with this?
+5-6 hours
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## What do you like about your implementation.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+It's extendable, If hour incremenets were needed it wouldn't need a large rewrite.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## What you would change if you were going to do it again.
 
-## Learn More
+The more dynamic styles like columns or grid-row-span should be directly on the element rather than tailwind classes. I'd probably add a state management tool like zustand or react-query depending on where we want changes to the data to be stored.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## How you made your design decisions. For example, if you looked at other timelines for inspiration, please note that.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+I looked at (this timeline component)[https://flowbite.com/docs/components/timeline/] for design inspiration.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## How you would test this if you had more time.
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+I'd write unit tests of some of the more complex functions, ie createEventList, createEventMap. I'd add snapshot testing.

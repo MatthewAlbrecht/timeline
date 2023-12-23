@@ -9,8 +9,11 @@ export default {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       gridTemplateColumns: {
-        // Complex site-specific column configuration
-        timeline: "100px 5px 250px 250px 250px 250px",
+        timeline3: "100px 5px 150px 150px 150px",
+        timeline4: "100px 5px 150px 150px 150px 150px",
+        timeline5: "100px 5px 150px 150px 150px 150px 150px",
+        timeline6: "100px 5px 150px 150px 150px 150px 150px 150px",
+        timeline7: "100px 5px 150px 150px 150px 150px 150px 150px 150px",
       },
       transitionProperty: {
         height: "height",
