@@ -14,7 +14,7 @@ The more dynamic styles like columns or grid-row-span should be directly on the 
 
 ## How you made your design decisions. For example, if you looked at other timelines for inspiration, please note that.
 
-I looked at (this timeline component)[https://flowbite.com/docs/components/timeline/] for design inspiration.
+I looked at [this timeline component](https://flowbite.com/docs/components/timeline/) for design inspiration.
 
 ## How you would test this if you had more time.
 
