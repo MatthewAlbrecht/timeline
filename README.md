@@ -1,5 +1,7 @@
 # Matthew Albrecht Assignment
 
+<img width="803" alt="Screen Shot 2023-12-23 at 8 11 48 AM" src="https://github.com/MatthewAlbrecht/timeline/assets/7471272/bf6170fe-84fb-4b30-8747-90d8b3cc56b0">
+
 ## How long did you spend on the assignment.
 
 5-6 hours
