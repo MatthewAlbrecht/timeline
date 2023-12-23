@@ -19,3 +19,7 @@ I looked at (this timeline component)[https://flowbite.com/docs/components/timel
 ## How you would test this if you had more time.
 
 I'd write unit tests of some of the more complex functions, ie createEventList, createEventMap. I'd add snapshot testing.
+
+## How to run locally
+
+To run the project locally, use the command `npm run dev`.
